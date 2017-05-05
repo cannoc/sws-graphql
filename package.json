@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,10 +14,8 @@
     "express": "^4.15.2",
     "express-graphql": "^0.6.4",
     "graphql": "^0.9.4",
+    "request": "^2.81.0",
     "request-promise": "^4.2.0",
     "requireindex": "^1.1.0"
-  },
-  "scripts": {
-    "start": "node app.js"
   }
 }
