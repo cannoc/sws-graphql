@@ -9,3 +9,15 @@ Requires an access token from UW Enterprise Web Services Team; UWNetID required.
 - npm start
 - Visit http://localhost:3009/graphql
 
+## Sample Query - Get Current Term
+
+```
+{
+  GetTermCurrent {
+    Year
+    Quarter
+    AcademicCatalog
+    CensusDay
+  }
+}
+```
