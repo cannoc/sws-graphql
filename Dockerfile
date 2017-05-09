@@ -6,7 +6,7 @@ RUN mkdir /app
 COPY . /app
 
 VOLUME /config
-COPY /app/config.env.example /config
+COPY config.env.example /config
 
 WORKDIR /app
 
