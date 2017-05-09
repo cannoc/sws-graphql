@@ -1,7 +1,9 @@
 if(process.env['DOTENV']){
+  // Use environment file if defined (docker)
   require('dotenv').config({path: process.env['DOTENV']});
 } else {
-  require('dotenv').config();
+  // otherwise look in current directory
+  require('dotenv').config({path: './config.env'});
 }
 const express = require('express');
 const graphQLHTTP = require('express-graphql');

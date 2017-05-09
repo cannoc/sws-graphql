@@ -6,5 +6,8 @@ WORKDIR /app
 
 RUN npm install
 VOLUME /config
-ENV DOTENV /config/.env
+
+COPY /app/config.env.example /config
+
+ENV DOTENV /config/config.env
 CMD ["npm", "start"]

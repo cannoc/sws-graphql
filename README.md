@@ -26,14 +26,14 @@ docker run -d --name="sws-graphql" -v /path/to/config-folder:/config -p "3009:30
 #### Cloning Repo 
 
 - Clone repo
-- Copy .env.example to .env and add Bearer Token
+- Copy config.env.example to config.env and add Bearer Token
 - npm install
 - npm start
 - Visit http://localhost:3009/graphql
 
 ### Config
 
-Application expects a .env file (see .env.example) in /path/to/config-folder or in the application root.  A valid token from SWS support is required to make calls to the public APIs. See the [SWS Wiki](https://wiki.cac.washington.edu/display/studentservices/Student+Web+Service) for more information.
+Application expects a config.env file (see config.env.example) in /path/to/config-folder or in the application root.  A valid token from SWS support is required to make calls to the public APIs. See the [SWS Wiki](https://wiki.cac.washington.edu/display/studentservices/Student+Web+Service) for more information.
 
 ### Sample Query - Get Current Term
 
