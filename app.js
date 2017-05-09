@@ -1,5 +1,4 @@
 if(process.env['DOTENV']){
-  console.log("ENV FOUND", process.env['DOTENV']);
   require('dotenv').config({path: process.env['DOTENV']});
 } else {
   require('dotenv').config();
