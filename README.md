@@ -2,11 +2,11 @@
 
 This is a work in progress GraphQL interface for UW SWS REST API.  Currently supports: Term, Curriculum, Course and Section public resources (access token required).
 
-## Installation
+### Installation
 
 Requires an access token from UW Enterprise Web Services Team; UWNetID required. [SWS Wiki](https://wiki.cac.washington.edu/display/studentservices/Student+Web+Service)
 
-### Docker Compose
+#### Docker Compose
 
 ```
 sws-graphql:
@@ -17,13 +17,13 @@ sws-graphql:
     - "3009:3009"
 ```
 
-### Docker Run
+#### Docker Run
 
 ```
 docker run -d --name="sws-graphql" -v /path/to/config-folder:/config -p "3009:3009" gvnmccld/sws-graphql
 ```
 
-### Cloning Repo 
+#### Cloning Repo 
 
 - Clone repo
 - Copy .env.example to .env and add Bearer Token
@@ -31,11 +31,11 @@ docker run -d --name="sws-graphql" -v /path/to/config-folder:/config -p "3009:30
 - npm start
 - Visit http://localhost:3009/graphql
 
-## Config
+### Config
 
 Application expects a .env file (see .env.example) in /path/to/config-folder or in the application root.  A valid token from SWS support is required to make calls to the public APIs. See the [SWS Wiki](https://wiki.cac.washington.edu/display/studentservices/Student+Web+Service) for more information.
 
-## Sample Query - Get Current Term
+### Sample Query - Get Current Term
 
 ```
 {
