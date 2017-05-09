@@ -7,9 +7,10 @@ VOLUME /config
 RUN mkdir /app
 COPY . /app
 
-COPY /app/config.env.example /config/config.env.example
-
 WORKDIR /app
+
+RUN cp config.env.example /config/config.env.example
+
 RUN npm install
 
 
