@@ -1,6 +1,8 @@
 FROM node
 
-ADD . package.json
+COPY . /app
+WORKDIR /app
 RUN npm install
-ADD . .
+VOLUME /config
+ENV DOTENV="/config/.env"
 CMD ["npm", "start"]

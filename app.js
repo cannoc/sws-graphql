@@ -1,4 +1,9 @@
-require('dotenv').config();
+if(process.env['DOTENV']){
+  console.log("ENV FOUND", process.env['DOTENV']);
+  require('dotenv').config({path: process.env['DOTENV']});
+} else {
+  require('dotenv').config();
+}
 const express = require('express');
 const graphQLHTTP = require('express-graphql');
 const DataLoader = require('dataloader');
