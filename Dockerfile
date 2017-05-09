@@ -1,8 +1,10 @@
 FROM node
 
+RUN mkdir /app
 COPY . /app
 WORKDIR /app
+
 RUN npm install
 VOLUME /config
-ENV DOTENV="/config/.env"
+ENV DOTENV /config/.env
 CMD ["npm", "start"]
