@@ -32,10 +32,14 @@ app.use(graphQLHTTP(req => {
       }
     )
   }
+  const startTime = Date.now();
   return {
     context: {loaders},
     schema,
-    graphiql: true
+    graphiql: true,
+    extensions({ document, variables, operationName, result }) {
+      return { operationName, runTime: (Date.now() - startTime) };
+    }
   }
 
 }));
