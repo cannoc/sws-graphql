@@ -43,14 +43,14 @@ app.delete('/query/:id', (req,res,next) => {
   res.send('success');
 });
 
-app.use('/graphql/:queryId', (req,res,next) => {
+app.use('/:queryId', (req,res,next) => {
   if(req.params.queryId && PQ.get(req.params.queryId)) {
     req.body.query = PQ.get(req.params.queryId).query;
   }
   next();
 });
 
-app.use('/graphql',
+app.use('/',
   graphQLHTTP((req, resp, next) => {
     // Loaders for GET one requests, should minimize calls to the API
     const startTime = Date.now();
