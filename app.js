@@ -1,4 +1,4 @@
-require('dotenv').config({path: process.env['CONFIGFILE'] ? process.env['DOTENV'] : './config.env'});
+require('dotenv').config({path: process.env['CONFIGFILE'] ? process.env['CONFIGFILE'] : './config.env'});
 const express = require('express');
 const graphQLHTTP = require('express-graphql');
 const DataLoader = require('dataloader');
