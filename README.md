@@ -60,3 +60,12 @@ Basic implementation of persisting queries, currently stores queries in a json f
 - GET /queries -> Get all queries
 - GET /queries/:username -> Get all queries by username
 - DELETE /query/:id -> Delete query by ID
+
+#### Sample Persisted Query
+```
+POST /graphql
+{
+  "QueryID": 1,
+  "variables": { "year": 2017, "quarter": "spring" }
+}
+```
