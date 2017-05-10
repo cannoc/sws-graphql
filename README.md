@@ -47,3 +47,16 @@ Application expects a config.env file (see config.env.example) in /path/to/confi
   }
 }
 ```
+
+### Persisted Queries (Work in Progress)
+
+Basic implementation of persisting queries, currently stores queries in a json file but can be easily updated to store anywhere.
+
+#### Routes
+
+- POST /queries/new -> save a new query
+- PUT /query/:id -> Update existing query
+- GET /query/:id -> Get query by ID
+- GET /queries -> Get all queries
+- GET /queries/:username -> Get all queries by username
+- DELETE /query/:id -> Delete query by ID
