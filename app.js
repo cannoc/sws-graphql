@@ -1,4 +1,4 @@
-require('dotenv').config({path: process.env['DOTENV'] ? process.env['DOTENV'] : './config.env'});
+require('dotenv').config({path: process.env['CONFIGFILE'] ? process.env['DOTENV'] : './config.env'});
 const express = require('express');
 const graphQLHTTP = require('express-graphql');
 const DataLoader = require('dataloader');
@@ -6,7 +6,7 @@ const Resolvers = require('./schema/resolvers');
 const app = express();
 const schema = require('./schema');
 const bodyParser = require('body-parser');
-const PQ = require('./persisted');
+const PQ = require('./persist');
 
 const loaders = {
   term: new DataLoader(keys => Promise.all(keys.map(Resolvers.GetTerm))),
@@ -16,7 +16,7 @@ const loaders = {
 
 app.use(bodyParser.json());
 
-app.post('/queries/new', (req,res,next) => {
+app.post('/query/new', (req,res,next) => {
   PQ.add(req.body.query, "default"); 
   res.send('success');
 });
@@ -43,9 +43,9 @@ app.delete('/query/:id', (req,res,next) => {
   res.send('success');
 });
 
-app.use('/graphql', (req,res,next) => {
-  if(req.body.QueryID && PQ.get(req.body.QueryID)) {
-    req.body.query = PQ.get(req.body.QueryID).query;
+app.use('/graphql/:queryId', (req,res,next) => {
+  if(req.params.queryId && PQ.get(req.params.queryId)) {
+    req.body.query = PQ.get(req.params.queryId).query;
   }
   next();
 });

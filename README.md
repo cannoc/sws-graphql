@@ -6,11 +6,14 @@ This is a work in progress GraphQL interface for UW SWS REST API.  Currently sup
 
 Requires an access token from UW Enterprise Web Services Team; UWNetID required. [SWS Wiki](https://wiki.cac.washington.edu/display/studentservices/Student+Web+Service)
 
+
 #### Docker Compose
 
 ```
 sws-graphql:
   image: gvnmccld/sws-graphql
+  environment:
+    - CONFIGFILE=/config/config.env
   volumes:
     - /path/to/config-folder:/config
   ports:
@@ -54,7 +57,7 @@ Basic implementation of persisting queries, currently stores queries in a json f
 
 #### Routes
 
-- POST /queries/new -> save a new query
+- POST /query/new -> save a new query
 - PUT /query/:id -> Update existing query
 - GET /query/:id -> Get query by ID
 - GET /queries -> Get all queries
@@ -63,9 +66,8 @@ Basic implementation of persisting queries, currently stores queries in a json f
 
 #### Sample Persisted Query
 ```
-POST /graphql
+POST /graphql/1
 {
-  "QueryID": 1,
   "variables": { "year": 2017, "quarter": "spring" }
 }
 ```

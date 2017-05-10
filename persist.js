@@ -1,9 +1,25 @@
-const queryFile = './queries.json';
-var PersistedQueries = require(queryFile);
+const queryFile = process.env.QueryFile ? process.env.QueryFile : './queries.json';
+var PersistedQueries = {};
 const fs = require('fs');
 
+if(fs.existsSync(queryFile)){
+  PersistedQueries = require(queryFile);
+  if(Object.keys(PersistedQueries).length === 0) {
+    PersistedQueries = { nextId: 0 };
+  } else if(!PersistedQueries.nextId) {
+    PersistedQueries.nextId = Math.max(Object.keys(PersistedQueries)) + 1 || 0;
+  }
+  updatePersistFile();
+} else {
+  fs.writeFile(queryFile, JSON.stringify({nextId:0}), function (err) {
+    if(err) return console.log("error creating persist file", err);
+    PersistedQueries = require(queryFile);
+    updatePersistFile();
+  });
+}
+
 function updatePersistFile() {
-   fs.writeFile('persisted/queries.json', JSON.stringify(PersistedQueries), function (err) {
+   fs.writeFile(queryFile, JSON.stringify(PersistedQueries), function (err) {
       if (err) return console.log('failed to update queries', err);
     });
 }

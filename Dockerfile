@@ -1,6 +1,5 @@
 FROM node:alpine
 
-ENV DOTENV /config/config.env
 VOLUME /config
 
 RUN mkdir /app
