@@ -66,7 +66,7 @@ app.use('/',
         path: error.path
       }),
       extensions({ document, variables, operationName, result }) {
-        return { operationName, runTime: (Date.now() - startTime) };
+        return { operationName, variables, runTime: (Date.now() - startTime) };
       }
     }
 }));
