@@ -26,6 +26,13 @@ app.put('/query/:id', (req,res,next) => {
   res.send('success');
 });
 
+app.post('/query/:queryId', (req,res,next) => {
+  if(req.params.queryId && PQ.get(req.params.queryId)) {
+    req.body.query = PQ.get(req.params.queryId).query;
+  }
+  next();
+});
+
 app.get('/query/:id', (req,res,next) => {
   res.send(PQ.get(req.params.id));
 });
@@ -41,13 +48,6 @@ app.get('/queries/:username', (req,res,next) => {
 app.delete('/query/:id', (req,res,next) => {
   PQ.delete(req.params.id);
   res.send('success');
-});
-
-app.use('/:queryId', (req,res,next) => {
-  if(req.params.queryId && PQ.get(req.params.queryId)) {
-    req.body.query = PQ.get(req.params.queryId).query;
-  }
-  next();
 });
 
 app.use('/',

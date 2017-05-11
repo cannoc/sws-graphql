@@ -53,11 +53,12 @@ Application expects a config.env file (see config.env.example) in /path/to/confi
 
 ### Persisted Queries (Work in Progress)
 
-Basic implementation of persisting queries, currently stores queries in a json file but can be easily updated to store anywhere.
+Ability to persist queries to a data store, optionally with variables, and execute them via a POST. Example code is storing in a .json file but could easily be remixed to store anywhere.
 
 #### Routes
 
 - POST /query/new -> save a new query
+- POST /query/:id -> Execute a persisted query
 - PUT /query/:id -> Update existing query
 - GET /query/:id -> Get query by ID
 - GET /queries -> Get all queries
@@ -66,7 +67,7 @@ Basic implementation of persisting queries, currently stores queries in a json f
 
 #### Sample Persisted Query
 ```
-POST /graphql/1
+POST /query/1
 {
   "variables": { "year": 2017, "quarter": "spring" }
 }
